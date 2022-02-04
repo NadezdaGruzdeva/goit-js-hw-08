@@ -24,26 +24,33 @@ const STORAGE_KEY = "feedback-form-state";
 if (localStorage.getItem(STORAGE_KEY) !== null) {
     const storage = JSON.parse(localStorage.getItem(STORAGE_KEY));
     populateTextarea(storage);
+    console.log(localStorage.getItem(STORAGE_KEY));
+    console.log(storage);
     }
 
 function onFormInput(evt){
     
     if (evt.currentTarget !== null) {
+        // console.log(evt.currentTarget);
         const { email, message } = evt.currentTarget;
+         console.log(email, message);
         const inputElements = {
             email: email.value,
             message: message.value,
+            
         }
+        console.log(inputElements);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(inputElements));
     }
 }
 
 function onFormSubmit(evt) {
   evt.preventDefault();
-
-  console.log('Отправляем форму');
-  evt.currentTarget.reset();
-  localStorage.removeItem(STORAGE_KEY);
+    if (message.value !== "" && email.value !== "") {
+        console.log('Отправляем форму');
+        evt.currentTarget.reset();
+        localStorage.removeItem(STORAGE_KEY);
+    }
 }
 
 function populateTextarea(savedMessageEmail) {

@@ -50,7 +50,7 @@ function onFormSubmit(evt) {
         console.log('Отправляем форму');
         evt.currentTarget.reset();
         localStorage.removeItem(STORAGE_KEY);
-    }
+    } else {alert('заполните форму')}
 }
 
 function populateTextarea(savedMessageEmail) {
